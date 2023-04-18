@@ -11,7 +11,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        BankAccount lydAccount = new BankAccount("Lydia Tham", "001-001-0001", (float)300);
+
+    /*  BankAccount lydAccount = new BankAccount("Lydia Tham", "001-001-0001", (float)300);
         // casting an integer as a float
 
         System.out.println(lydAccount.toString());
@@ -31,7 +32,8 @@ public class App
         int n = 5;
         BankAccount[] account = new BankAccount[n];
 
-        for (int i = 0; i < account.length; i++) {
+            // create random account number
+            for (int i = 0; i < account.length; i++) {
             String uuid = UUID.randomUUID().toString();
 
             float min = (float)1000;
@@ -45,5 +47,37 @@ public class App
 
         //close account
         lydAccount.setClosed(true);
+        */
+
+        //FIXED DEPOSIT CLASS
+
+        //create fixed deposit account 1
+        FixedDepositAccount depositAccount1 = new FixedDepositAccount ("Lyd Tham", (float)300);
+        System.out.println(depositAccount1.toString());
+
+        //test for fixed account withdrawal
+        depositAccount1.withdraw(200.00f);
+        System.out.println(depositAccount1.getBalance());
+
+        //test for fixed account deposit
+        depositAccount1.deposit(200.00f);
+        System.out.println(depositAccount1.getBalance());
+
+        // test for interest setting
+        depositAccount1.setInterest(10);
+        System.out.println(depositAccount1.getInterest());
+        depositAccount1.setInterest(20);
+
+        // test for duration setting
+        depositAccount1.setDuration(12);
+        System.out.println(depositAccount1.getDuration());
+        depositAccount1.setDuration(18);
+
+        //create fixed deposit account 2
+        FixedDepositAccount depositAccount2 = new FixedDepositAccount ("Lyd Tham", (float)300);
+        System.out.println(depositAccount2.toString());
+
+        //test balance
+        System.out.println(depositAccount2.getBalance());
     }
 }

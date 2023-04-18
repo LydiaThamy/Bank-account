@@ -5,20 +5,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankAccount {
+    
+    // members
     private final String fullName;
-    private String accountNumber;
+    
+    float max = 9999999999.00f;
+    float min = 1;
+    double randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    private final String accountNumber = randomNumber+"";
+    
     private float balance;
     private boolean isClosed = false;
     private Date accountStartDate;
     private Date accountEndDate;
     private List<String> transactions; // this collection is not instantiated, so it does not yet exist
-    // we don't need it now, since no bank account exists
-    // we will instantiate it once an account is created
+        // we don't need it now, since no bank account exists
+        // we will instantiate it once an account is created
     
-    // generate constrcutors
-    public BankAccount(String fullName, String accountNumber) {
+    // constrcutors
+    public BankAccount(String fullName/*, String accountNumber*/) {
         this.fullName = fullName;
-        this.accountNumber = accountNumber;
+        /* this.accountNumber = accountNumber; */
         this.balance = 0.0f;
 
         // set the date once the account is opened (instatiated)
@@ -26,9 +34,9 @@ public class BankAccount {
         transactions = new ArrayList<>();
     }
 
-    public BankAccount(String fullName, String accountNumber, float balance) {
+    public BankAccount(String fullName,/*  String accountNumber, */ float balance) {
         this.fullName = fullName;
-        this.accountNumber = accountNumber;
+        /* this.accountNumber = accountNumber; */
         this.balance = balance;
         transactions = new ArrayList<>();
     }
@@ -40,21 +48,26 @@ public class BankAccount {
     public String getAccountNumber() {
         return accountNumber;
     }
+
+        //modified balance getter and setter
     public float getBalance() {
         return balance;
     }
     public void setBalance(float balance) {
         this.balance = balance;
     }
+    
     public boolean isClosed() {
         return isClosed;
     }
+
     public void setClosed(boolean isClosed) {
         this.isClosed = isClosed;
 
         // set the date once the account is closed
         this.accountEndDate = new Date(); 
     }
+
     public Date getAccountStartDate() {
         return accountStartDate;
     }
